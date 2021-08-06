@@ -1,0 +1,11 @@
+FROM openjdk:16-alpine
+EXPOSE 25565
+WORKDIR /home/container
+
+COPY ./prepare.sh /prepare.sh
+COPY ./start.sh /home/container/
+
+#RUN apk add --no-cache --upgrade bash
+#CMD ["bash", "/prepare.sh" ]
+
+CMD ["sh", "/prepare.sh"]
