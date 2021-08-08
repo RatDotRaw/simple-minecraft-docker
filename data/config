@@ -1,0 +1,19 @@
+source /home/container/data/paper.list
+
+fdir="/home/container"
+
+#option 0: manual setup
+#option 1: automatic setup, enter version from *.list or enter cutom download url(jar expected) and renames jar to $jar_name
+#option 2: download link(zip) and extract (start.sh, *.jar and eula.txt expected)
+option="1"
+
+#enter version from *list or download url(jar expected)
+server="$paper_1_17_1"
+
+#default settings
+jar_name="server.jar" 
+Xmx="1024M"
+Xms="1024M"
+
+#start command, change if needed
+start_command="java -Xmx$Xmx -Xms$Xms -jar $jar_name nogui"

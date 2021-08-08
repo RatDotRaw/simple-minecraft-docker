@@ -1,0 +1,19 @@
+#list of paper downloads
+
+#1.17.*
+paper_1_17_1="https://serverjars.com/api/fetchJar/paper/1.17.1"
+paper_1_17="https://serverjars.com/api/fetchJar/paper/1.17"
+
+#1.16.*
+paper_1_16_5="https://serverjars.com/api/fetchJar/paper/1.16.5"
+paper_1_16_4="https://serverjars.com/api/fetchJar/paper/1.16.4"
+paper_1_16_3="https://serverjars.com/api/fetchJar/paper/1.16.3"
+paper_1_16_2="https://serverjars.com/api/fetchJar/paper/1.16.2"
+paper_1_16_1="https://serverjars.com/api/fetchJar/paper/1.16.1"
+
+#1.15.*
+paper_1_15_2="https://serverjars.com/api/fetchJar/paper/1.15.2"
+paper_1_15_1="https://serverjars.com/api/fetchJar/paper/1.15.1"
+paper_1_15_2="https://serverjars.com/api/fetchJar/paper/1.15"
+
+#1.14.*
