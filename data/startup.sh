@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -f "/home/container/start.sh" ]; then
+if [ -f "/home/container/minecraft/start.sh" ]; then
     echo "+=+ Executing start.sh."
     bash /home/container/minecraft/start.sh
 else

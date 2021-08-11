@@ -13,7 +13,6 @@ option_1 () { #automatic setup
     create_startscript
     create_eula
 
-    echo "+==+ /minecraft $(ls /home/container/minecraft)"
     start_server
 }
 

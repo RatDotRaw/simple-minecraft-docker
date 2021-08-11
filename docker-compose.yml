@@ -1,0 +1,12 @@
+#DO NOT USE THIS FILE: The docker copose file does not work, the file is not finished.
+
+version: '3.3'
+services:
+    minecraft-docker:
+        container_name: minecraft-docker-server
+        restart: unless-stopped
+        ports:
+            - '25565:25565'
+        volumes:
+            - '/home/minecraft:/home/container/minecraft'
+        image: minecraft-docker
