@@ -13,8 +13,8 @@ server="$paper_1_17_1"
 
 #default settings
 jar_name="server.jar" 
-Xmx="1024M"
-Xms="1024M"
+Xmx="2042M"
+Xms="512M"
 
 #start command, change if needed
 start_command="java -Xmx$Xmx -Xms$Xms -jar $jar_name nogui"
