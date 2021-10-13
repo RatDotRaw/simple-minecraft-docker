@@ -8,7 +8,7 @@ I'm planning to work a bit more on it put no promises.
 In the data dir, you find a file called config.
 Change the config file to your needs and build the container.
 
-
+For the docker mount, you need to mount it to /home/container/minecraft
 
 Don't mind everything below this, I am using this as a public notepad.
 7452461811165247495
