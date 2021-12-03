@@ -10,10 +10,6 @@ Change the config file to your needs and build the container.
 
 For the docker mount, you need to mount it to /home/container/minecraft
 
-Don't mind everything below this, I am using this as a public notepad.
-7452461811165247495
 
+this should be a pretty solid start command:
 docker run -i --restart unless-stopped --cpus="2" --memory=2048m -p 25565:25565 --volume=/home/pi/minecraft:/home/container/minecraft minecraft-docker
-
-docker run --name=minecraft-server --volume=/home/pi/minecraft:/home/container/minecraft --volume=/home/container/minecraft --workdir=/home/container/minecraft -p 25565:25565 --restart=unless-stopped -t minecraft-docker:latest bash /home/container/data/startup.sh
-
