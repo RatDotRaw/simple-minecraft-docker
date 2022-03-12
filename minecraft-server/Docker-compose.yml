@@ -1,0 +1,19 @@
+services:
+    minecraft-docker:
+        build: ./
+        # image: minecraft-docker
+        restart: unless-stopped
+        volumes:
+            - 'mc-volume1:/home/container'
+            - '/home/shared-plugins:/home/container/plugins'
+        ports:
+            - "25565:25565"
+        deploy:
+            resources:
+                limits:
+                    cpus: '2'
+                    memory: 2G
+                    pids: 1
+                # reservations:
+                #     cpus: '0.25'
+                #     memory: 0.5G
