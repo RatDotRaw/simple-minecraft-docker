@@ -1,6 +1,7 @@
 #!/bin/bash
 
-source /home/container/data/config
+source /home/data/config
+
 
 option_0 () { #manual setup
     echo "+=+ Manual setup selected"
@@ -9,10 +10,10 @@ option_0 () { #manual setup
 option_1 () { #automatic setup
     echo "+=+ Automatic setup selected."
     echo "+=+ Downloading jar from $server."
-    wget --continue -O /home/container/minecraft/$jar_name $server
+    wget --continue -O /home/container/$jar_name $server
+
     create_startscript
     create_eula
-
     start_server
 }
 
@@ -22,16 +23,21 @@ option_2 () {
 
     echo "+=+ Download link(zip) selected."
     echo "+=+ Downloading file from $server."
-    wget --continue -O /home/container/minecraft/serverzip.zip $server
+    wget --continue -O /home/container/*.zip $server
     echo "+=+ Unzipping file."
-    unzip -d /home/container/minecraft serverzip.zip
+    unzip -d /home/container serverzip.zip
     echo "+=+ Removing zip file."
-    rm --force serverzip.zip
+    rm --force *.zip
+
+    create_startscript
+    create_eula
+    start_server
 }
+
 
 start_server () {
     echo "+=+ Starting server."
-    bash /home/container/minecraft/start.sh
+    bash /home/container/start.sh
 }
 
 create_startscript () {
@@ -39,7 +45,7 @@ create_startscript () {
     echo "
     #!/bin/bash
     $start_command
-    " > /home/container/minecraft/start.sh
+    " > /home/container/start.sh
 }
 
 create_eula () {
@@ -47,11 +53,7 @@ create_eula () {
     echo "#By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula).
     #You also agree that Minecraft is tasty, and the best game in the world.
     eula=true
-    " > /home/container/minecraft/eula.txt
-}
-
-cleanup () {
-    echo "+=+ I am a lazy dev."
+    " > /home/container/eula.txt
 }
 
 if [ "$option" == "0" ]; then
@@ -60,10 +62,8 @@ elif [ "$option" == "1" ]; then
     option_1
 elif [ "$option" == "2" ]; then
     option_2
-elif [ "$option" == "3" ]; then
-    option_3
 else
     echo "+=+ Invalid option."
 fi
 
-echo "+=+ Exiting."
+echo "+=+ Exiting..."

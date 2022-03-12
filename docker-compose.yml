@@ -1,12 +1,44 @@
 #DO NOT USE THIS FILE: The docker copose file does not work, the file is not finished.
-
-version: '3.3'
 services:
-    minecraft-docker:
-        container_name: minecraft-docker-server
+    waterfall:
+        # build: ./waterfall
+        image: waterfall-docker
         restart: unless-stopped
-        ports:
-            - '25565:25565'
+        configs:
+            - source: waterfall-config
+              target: /home/container/config.yml
         volumes:
-            - '/home/minecraft:/home/container/minecraft'
+            - 'waterfall-volume:/home/container'
+        ports:
+            - "25565:25565"
+        networks:
+            - internal-mc
+    lobby:
+        # build: ./minecraft-server
         image: minecraft-docker
+        restart: unless-stopped
+        volumes:
+            - 'mc-volume1:/home/container'
+            - '/home/shared-plugins:/home/container/plugins'
+        networks:
+            - internal-mc
+        deploy:
+            resources:
+                limits:
+                    cpus: '2'
+                    memory: 2G
+                    pids: 1
+                reservations:
+                    cpus: '0.25'
+                    memory: 0.5G
+volumes:
+    waterfall-volume:
+    mc-volume1:
+
+configs:
+  waterfall-config:
+    file: './waterfall.yml'
+
+networks:
+    internal-mc: {}
+#    internal-non-mc: {}
