@@ -1,7 +1,9 @@
 services:
     minecraft-docker:
-        build: ./
-        # image: minecraft-docker
+        # build: ./
+        image: minecraft-docker
+        stdin_open: true # docker run -i
+        # tty: true        # docker run -t
         restart: unless-stopped
         volumes:
             - 'mc-volume1:/home/container'
@@ -12,8 +14,7 @@ services:
             resources:
                 limits:
                     cpus: '2'
-                    memory: 2G
-                    pids: 1
+                    # memory: 2G
                 # reservations:
                 #     cpus: '0.25'
                 #     memory: 0.5G

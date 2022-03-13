@@ -1,44 +1,50 @@
 #DO NOT USE THIS FILE: The docker copose file does not work, the file is not finished.
+version: '3'
+
 services:
     waterfall:
         # build: ./waterfall
-        image: waterfall-docker
+        image: waterfall-docker:latest
+        stdin_open: true # docker run -i
         restart: unless-stopped
-        configs:
-            - source: waterfall-config
-              target: /home/container/config.yml
+        # configs:
+        #     - source: waterfall-config
+        #       target: /home/container/config.yml
         volumes:
-            - 'waterfall-volume:/home/container'
+            - 'mc-waterfall:/home/container'
+            # - '/home/waterfalltest:/home/container'
         ports:
             - "25565:25565"
         networks:
-            - internal-mc
+            - mc-internal
     lobby:
         # build: ./minecraft-server
         image: minecraft-docker
+        stdin_open: true # docker run -i
         restart: unless-stopped
         volumes:
-            - 'mc-volume1:/home/container'
-            - '/home/shared-plugins:/home/container/plugins'
+            - 'mc-lobby:/home/container'
+            # - '/home/shared-plugins:/home/container/plugins'
         networks:
-            - internal-mc
+            - mc-internal
         deploy:
             resources:
                 limits:
                     cpus: '2'
-                    memory: 2G
-                    pids: 1
-                reservations:
-                    cpus: '0.25'
-                    memory: 0.5G
+                    # memory: 2G
+                # reservations:
+                #     cpus: '0.25'
+                    # memory: 0.5G
 volumes:
-    waterfall-volume:
-    mc-volume1:
+    mc-waterfall:
+    mc-lobby:
 
-configs:
-  waterfall-config:
-    file: './waterfall.yml'
+# configs:
+#   waterfall-config:
+#     external: true
 
 networks:
-    internal-mc: {}
+    mc-internal: 
+        # external:
+        #     name: mc-global
 #    internal-non-mc: {}

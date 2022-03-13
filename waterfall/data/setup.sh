@@ -22,13 +22,24 @@ option_2 () {
 
     echo "+=+ Download link(zip) selected."
     echo "+=+ Downloading file from $server."
-    wget --continue -O /home/container/*.zip $server
+    wget --continue -O /home/data/server.zip $server
     echo "+=+ Unzipping file."
-    unzip -d /home/container serverzip.zip
-    echo "+=+ Removing zip file."
-    rm --force *.zip
+    unzip -d /home/container /home/data/server.zip
+    echo "+=+ Removing zip files."
+    rm --force /home/data/*.zip
 
     create_startscript
+    create_eula
+    start_server
+}
+
+option_3 () {
+    echo "+=+ Unzipping file."
+    pwd
+    unzip -d /home/container/ /home/data/*.zip
+    echo "+=+ Removing zip files."
+    rm --force /home/data/*.zip
+
     start_server
 }
 
@@ -52,6 +63,8 @@ elif [ "$option" == "1" ]; then
     option_1
 elif [ "$option" == "2" ]; then
     option_2
+elif [ "$option" == "3" ]; then
+    option_3
 else
     echo "+=+ Invalid option."
 fi
