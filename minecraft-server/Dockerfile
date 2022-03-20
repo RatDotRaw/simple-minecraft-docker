@@ -9,8 +9,9 @@ RUN apt update && apt install -y wget unzip nodejs npm
 ADD ./rcon /app/rcon
 WORKDIR /app/rcon
 RUN npm install
-RUN ln -s /app/rcon/
+RUN ln -s /app/rcon/rcon.js /usr/bin/rcon
+RUN chmod u+x /app/rcon/rcon.js
 
-WORKDIR /home/container
+WORKDIR /app/container
 
-CMD ["bash", "/app/data/startup.sh" ]
+CMD ["bash", "/app/data/startup.sh"]

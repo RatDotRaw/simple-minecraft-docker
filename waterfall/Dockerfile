@@ -1,11 +1,12 @@
 FROM eclipse-temurin:17-jre
 EXPOSE 25565
 
-WORKDIR /home/container
+WORKDIR /app/container
 
 RUN mkdir /home/data
-COPY ./data/* /home/data/
+COPY ./data/* /app/data/
 
 RUN apt update && apt install -y wget unzip
 
-CMD ["bash", "/home/data/startup.sh" ]
+
+CMD ["bash", "/app/data/startup.sh" ]

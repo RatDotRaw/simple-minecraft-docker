@@ -2,14 +2,14 @@
 
 pwd
 
-source /home/data/config
+source /app/data/config
 
-if [ -f "/home/container/start.sh" ]; then
-    if [ -f "/home/container/$jar_name" ]; then
+if [ -f "/app/container/start.sh" ]; then
+    if [ -f "/app/container/$jar_name" ]; then
         echo "+=+ Executing start.sh."
-        bash /home/container/start.sh
+        bash /app/container/start.sh
     fi
 else
     echo "+=+ server not found, executing setup.sh."
-    bash /home/data/setup.sh
+    bash /app/data/setup.sh
 fi

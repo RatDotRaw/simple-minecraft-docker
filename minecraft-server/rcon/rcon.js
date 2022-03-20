@@ -4,7 +4,7 @@ var Rcon = require("rcon");
 
 const host = "localhost";
 const port = "25575";
-const password = '"changeme"';
+const password = '';
 
 var conn = new Rcon(host, port, password);
 

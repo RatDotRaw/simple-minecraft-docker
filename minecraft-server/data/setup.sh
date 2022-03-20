@@ -10,7 +10,7 @@ option_0 () { #manual setup
 option_1 () { #automatic setup
     echo "+=+ Automatic setup selected."
     echo "+=+ Downloading jar from $server."
-    wget --continue -O /home/container/$jar_name $server
+    wget --continue -O /app/container/$jar_name $server
 
     create_startscript
     create_eula
@@ -22,7 +22,7 @@ option_2 () {
     echo "+=+ Downloading file from $server."
     wget --continue -O /app/data/server.zip $server
     echo "+=+ Unzipping file."
-    unzip -d /home/container /app/data/server.zip
+    unzip -d /app/container /app/data/server.zip
     echo "+=+ Removing zip files."
     rm --force /app/data/*.zip
 
@@ -33,8 +33,7 @@ option_2 () {
 
 option_3 () {
     echo "+=+ Unzipping file."
-    pwd
-    unzip -d /home/container/ /app/data/*.zip
+    unzip -d /app/container/ /app/data/*.zip
     echo "+=+ Removing zip files."
     rm --force /app/data/*.zip
 
@@ -44,7 +43,7 @@ option_3 () {
 
 start_server () {
     echo "+=+ Starting server."
-    bash /home/container/start.sh
+    bash /app/container/start.sh
 }
 
 create_startscript () {
@@ -52,7 +51,7 @@ create_startscript () {
     echo "
     #!/bin/bash
     $start_command
-    " > /home/container/start.sh
+    " > /app/container/start.sh
 }
 
 create_eula () {
@@ -60,7 +59,7 @@ create_eula () {
     echo "#By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula).
     #You also agree that Minecraft is tasty, and the best game in the world.
     eula=true
-    " > /home/container/eula.txt
+    " > /app/container/eula.txt
 }
 
 if [ "$option" == "0" ]; then

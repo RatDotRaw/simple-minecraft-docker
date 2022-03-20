@@ -9,10 +9,10 @@ services:
         restart: unless-stopped
         # configs:
         #     - source: waterfall-config
-        #       target: /home/container/config.yml
+        #       target: /app/container/config.yml
         volumes:
-            - 'mc-waterfall:/home/container'
-            # - '/home/waterfalltest:/home/container'
+            - 'mc-waterfall:/app/container'
+            # - '/app/waterfalltest:/app/container'
         ports:
             - "25565:25565"
         networks:
@@ -23,8 +23,8 @@ services:
         stdin_open: true # docker run -i
         restart: unless-stopped
         volumes:
-            - 'mc-lobby:/home/container'
-            # - '/home/shared-plugins:/home/container/plugins'
+            - 'mc-lobby:/app/container'
+            # - '/home/shared-plugins:/app/container/plugins'
         networks:
             - mc-internal
         deploy:
