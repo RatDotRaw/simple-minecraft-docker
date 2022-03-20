@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var Rcon = require("rcon");
 
 const host = "localhost";

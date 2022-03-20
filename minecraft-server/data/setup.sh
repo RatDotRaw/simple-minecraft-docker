@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source /home/data/config
+source /app/data/config
 
 
 option_0 () { #manual setup
@@ -18,16 +18,13 @@ option_1 () { #automatic setup
 }
 
 option_2 () {
-    echo "+=+ I am a lazy dev."
-    echo "+=+ warning, I never tested if option 2 actually works."
-
     echo "+=+ Download link(zip) selected."
     echo "+=+ Downloading file from $server."
-    wget --continue -O /home/data/server.zip $server
+    wget --continue -O /app/data/server.zip $server
     echo "+=+ Unzipping file."
-    unzip -d /home/container /home/data/server.zip
+    unzip -d /home/container /app/data/server.zip
     echo "+=+ Removing zip files."
-    rm --force /home/data/*.zip
+    rm --force /app/data/*.zip
 
     create_startscript
     create_eula
@@ -37,9 +34,9 @@ option_2 () {
 option_3 () {
     echo "+=+ Unzipping file."
     pwd
-    unzip -d /home/container/ /home/data/*.zip
+    unzip -d /home/container/ /app/data/*.zip
     echo "+=+ Removing zip files."
-    rm --force /home/data/*.zip
+    rm --force /app/data/*.zip
 
     start_server
 }

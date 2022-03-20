@@ -4,6 +4,7 @@
   "description": "",
   "main": "rcon.js",
   "scripts": {
+    "start": "nodejs rcon.js",
     "test": "nodemon rcon.js"
   },
   "author": "",
