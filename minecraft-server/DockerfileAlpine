@@ -1,12 +1,12 @@
 #####
-# ubuntu edition
+# alpine edition
 #####
-FROM eclipse-temurin:17-jre
+FROM eclipse-temurin:17-jre-alpine
 EXPOSE 25565
 
 ADD ./data /app/data
 
-RUN apt update && apt install --no-install-recommends -y wget unzip nodejs npm && rm -rf /var/lib/apt/lists/*
+RUN apk add --update bash nodejs npm wget unzip 
 
 # install rcon 
 ADD ./rcon /app/rcon
