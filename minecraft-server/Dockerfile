@@ -11,9 +11,9 @@ RUN apt update && apt install --no-install-recommends -y wget unzip nodejs npm &
 # install rcon 
 ADD ./rcon /app/rcon
 WORKDIR /app/rcon
-RUN npm install
-RUN ln -s /app/rcon/rcon.js /usr/bin/rcon
-RUN chmod u+x /app/rcon/rcon.js
+RUN npm install && \
+    ln -s /app/rcon/rcon.js /usr/bin/rcon && \
+    chmod u+x /app/rcon/rcon.js
 
 WORKDIR /app/container
 
