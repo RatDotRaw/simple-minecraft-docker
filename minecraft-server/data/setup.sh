@@ -13,7 +13,9 @@ option_1 () { #automatic setup
     wget --continue -O /app/container/$jar_name $server
 
     create_startscript
+    start_server
     create_eula
+    write_properties
     start_server
 }
 
@@ -27,7 +29,9 @@ option_2 () {
     rm --force /app/data/*.zip
 
     create_startscript
+    start_server
     create_eula
+    write_properties
     start_server
 }
 
@@ -60,6 +64,11 @@ create_eula () {
     #You also agree that Minecraft is tasty, and the best game in the world.
     eula=true
     " > /app/container/eula.txt
+}
+
+write_properties () {
+    echo "+=+ writing properties."
+    node /app/properties-edit/properties-edit.js
 }
 
 if [ "$option" == "0" ]; then

@@ -1,0 +1,15 @@
+{
+  "name": "yaml-edit",
+  "version": "1.0.0",
+  "main": "yml-edit.js",
+  "scripts": {
+    "test": "node yml-edit.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "yaml-edit": "^0.1.3"
+  },
+  "devDependencies": {},
+  "description": ""
+}
