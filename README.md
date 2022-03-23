@@ -5,13 +5,14 @@ minecraft dockerfiles for easy server
 for a simple setup, you can execute the autodeploy.sh file after configuring both the minecraft-server and waterfall.
 
 ## setup
-### creating public network
+### creating public network (optinal)
 a public network is required to connect servers outside the stack. the default network name is called mc-global
 ```
 docker network create -d overlay --attachable public
 ```
 
 ### configuring the containers.
+The container can partialy be configured in the docker 
 both containers need to beconfigured before they should be build.
 the configuration file of both containers are located in their respective directories.
 ```
@@ -21,9 +22,14 @@ the configuration file of both containers are located in their respective direct
 
 ### building the containers.
 both containers can be build by running the following commands:
+#### Ubuntu container:
 ```
-docker build -t minecraft-docker ./minecraft-server/
+docker build -t minecraft-docker -f Dockerfile ./minecraft-server/
 docker build -t waterfall-docker ./waterfall/
+```
+#### Alpine container:
+```
+docker build -t minecraft-docker -f DockerfileAlpine ./minecraft-server/
 ```
 
 ### running the containers
@@ -32,18 +38,3 @@ configuring the docker-compose.yml file is recomended.
 ```
 docker-compose up
 ```
-
-## separate containers
-### minecraft server only
-to only use the minecraft container you need to configure and build them yourself
-```
-docker build -t minecraft-docker ./minecraft-server/
-```
-
-### waterfall only
-to use the containers you need to build and configure them first.
-Then you can build the image with the command:
-```
-docker build -t waterfall-docker ./waterfall/
-```
-
