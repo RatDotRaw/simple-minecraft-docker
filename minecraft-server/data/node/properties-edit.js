@@ -2,17 +2,16 @@ const fs = require("fs");
 var PropertiesReader = require("properties-reader");
 
 // settings
-// const propFile = "/app/container/server.properties";
-const propFile = "test.properties";
-const remSections = true;
+const propFile = "/app/container/server.properties";
+// const propFile = "test.properties";
 
 var props = PropertiesReader(propFile, {
     writer: { saveSections: false },
 });
 
-var properties = {};
 // getting environment vars
-properties["rcon.port"] = "hmm";
+var properties = {};
+properties["rcon.port"] = process.env.RCON_PORT;
 properties["enable-command-block"] = process.env.ENABLE_COMMAND_BLOCK;
 properties["gamemode"] = process.env.GAMEMODE;
 properties["motd"] = process.env.MOTD;
@@ -32,9 +31,6 @@ properties["white-list"] = process.env.WHITE_LIST;
 // props.set("spawn-animals] = SPAWN_PROTECTION);
 
 // set properties values
-props.set("test.key", "true");
-props.set("rcon.rcon.port", "yes");
-
 Object.keys(properties).forEach((key) => {
     if (!properties[key] == "") {
         console.log("key: ", key, " value:", properties[key]);
@@ -50,18 +46,4 @@ props.save(propFile, function then(err, data) {
         console.log("error in write a properties file");
     }
     console.log("saved data to ", propFile);
-
-    RemoveSections();
 });
-
-function RemoveSections() {
-    if (remSections == true) {
-        fs.readFile(propFile, (err, data) => {
-            if (err) throw error;
-
-            var arr = data.toString().replace(/\r\n/g, "\n").split("\n");
-
-
-        });
-    }
-}

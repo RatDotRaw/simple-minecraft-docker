@@ -2,7 +2,7 @@ let yamlEdit = require('yaml-edit');
 
 const yaml = 'test.yml';
 
-yamlEdit.init(yaml));
+yamlEdit.init(yaml);
 
 
 

@@ -3,8 +3,8 @@
 var Rcon = require("rcon");
 
 const host = "localhost";
-const port = "25575";
-const password = 'changeme';
+const port = process.env.RCON_PORT;
+const password = process.env.RCON_PASSWORD;
 
 var conn = new Rcon(host, port, password);
 
