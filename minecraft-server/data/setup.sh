@@ -68,7 +68,7 @@ create_eula () {
 
 write_properties () {
     echo "+=+ writing properties."
-    node /app/properties-edit/properties-edit.js
+    node $nodedir/properties-edit.js
 }
 
 if [ "$option" == "0" ]; then

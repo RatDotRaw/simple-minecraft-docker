@@ -1,0 +1,16 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "properties-reader": "^2.2.0",
+    "rcon": "^1.1.0",
+    "yaml-edit": "^0.1.3"
+  }
+}

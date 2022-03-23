@@ -28,17 +28,11 @@ ADD ./data /app/data
 
 RUN apt update && apt install --no-install-recommends -y wget unzip nodejs npm && rm -rf /var/lib/apt/lists/*
 
-# install rcon 
-ADD ./rcon /app/rcon
-WORKDIR /app/rcon
+# install nodejs apps
+WORKDIR /app/data/node
 RUN npm install && \
-    ln -s /app/rcon/rcon.js /usr/bin/rcon && \
-    chmod u+x /app/rcon/rcon.js
-
-# install properties-edit
-ADD ./properties-edit /app/properties-edit
-WORKDIR /app/properties-edit
-RUN npm install
+    ln -s /app/data/node/rcon.js /usr/bin/rcon && \
+    chmod u+x /app/data/node/rcon.js
 
 WORKDIR /app/container
 

@@ -1,19 +1,27 @@
-#option 0: manual setup
-#option 1: automatic setup, enter version from *.list or enter cutom download url(jar expected) and renames jar to $jar_name
-#option 2: download link(zip) and extract (start.sh, *.jar and eula.txt required)
-#option 3: copy local *.zip(located in /data) and extract (start.sh, *.jar and eula.txt required)
+# option 0: manual setup
+# option 1: automatic setup, enter version from *.list or enter cutom download url(jar expected) and renames jar to $jar_name
+# option 2: download link(zip) and extract (start.sh, *.jar and eula.txt required)
+# option 3: copy local *.zip(located in /data) and extract (start.sh, *.jar and eula.txt required)
 option="1"
 
-#enter download url(jar expected)
+# enter download url(jar expected)
 server="https://serverjars.com/api/fetchJar/paper/1.18.2"
 
-#cron password (does not work)
+# cron password (does not work)
 rconpasswd="changeme"
 
-#default settings
+# default settings
 jar_name="server.jar" 
 Xmx="2042M"
 Xms="512M"
 
-#start command (change if needed)
+# tart command (change if needed)
 start_command="java -Xmx$Xmx -Xms$Xms -jar $jar_name nogui"
+
+
+##################
+# script configs #
+##################
+
+# node apps dir
+nodedir="/app/data/node"
