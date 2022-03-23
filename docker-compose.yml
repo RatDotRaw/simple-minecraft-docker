@@ -1,50 +1,47 @@
-#DO NOT USE THIS FILE: The docker copose file does not work, the file is not finished.
-version: '3'
-
 services:
-    waterfall:
-        # build: ./waterfall
-        image: waterfall-docker:latest
-        stdin_open: true # docker run -i
-        restart: unless-stopped
-        # configs:
-        #     - source: waterfall-config
-        #       target: /app/container/config.yml
-        volumes:
-            - 'mc-waterfall:/app/container'
-            # - '/app/waterfalltest:/app/container'
-        ports:
-            - "25565:25565"
-        networks:
-            - mc-internal
-    lobby:
-        # build: ./minecraft-server
+    minecraft-docker:
+        # build: ./
         image: minecraft-docker
         stdin_open: true # docker run -i
+        tty: true        # docker run -t
         restart: unless-stopped
+        ports:
+            - "25565:25565" # minecraft port
+            - "25575:25575" # rcon port
         volumes:
-            - 'mc-lobby:/app/container'
+            - 'mc-volume:/app/container' # mountpoint to system
             # - '/home/shared-plugins:/app/container/plugins'
-        networks:
-            - mc-internal
+        environment:
+            # required settings
+            - 'OPTION=1'
+            - 'URL=https://serverjars.com/api/fetchJar/paper/1.18.2'
+            - 'JAR_NAME=server.jar'
+            - 'XMX=2G'
+            - 'XMS=512M'
+            # optinoal settings
+            - 'ENABLE_COMMAND_BLOCK=false'
+            - 'GAMEMODE=survival'
+            - 'MOTD=A Minecraft server in Docker'
+            - 'QUERY_PORT=25565'
+            - 'PVP=true'
+            - 'DIFFICULTY=easy'
+            - 'MAX_PLAYERS=20'
+            - 'ONLINE_MODE=true'
+            - 'VIEW_DISTANCE=10'
+            - 'SERVER_IP='
+            - 'SERVER_PORT=25565'
+            - 'ENABLE_RCON=true'
+            - 'RESOURCE_PACK='
+            - 'RCON_PASSWORD=Ch@ng3m3'
+            - 'FORCE_GAMEMODE=false'
+            - 'WHITE_LIST=false'
+            - 'SPAWN_PROTECTION=16'
+
         deploy:
             resources:
                 limits:
-                    cpus: '2'
+                    cpus: '1' # cpu limit
                     # memory: 2G
                 # reservations:
                 #     cpus: '0.25'
-                    # memory: 0.5G
-volumes:
-    mc-waterfall:
-    mc-lobby:
-
-# configs:
-#   waterfall-config:
-#     external: true
-
-networks:
-    mc-internal: 
-        # external:
-        #     name: mc-global
-#    internal-non-mc: {}
+                #     memory: 0.5G
