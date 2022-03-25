@@ -2,7 +2,7 @@
 Minecraft dockerfile for a simple easy server
 
 # :exclamation: Be informed
-All the requirements have default values if you use the docker-compose.yml
+All the requirements have default values if you use the docker-compose.yml.
 If you are not using the docker-compose.yml, the container may behave unexpectedly.
 
 # Run commands inside the container.
