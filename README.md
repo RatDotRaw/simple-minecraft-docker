@@ -54,7 +54,7 @@ WHITE_LIST="false"
 SPAWN_PROTECTION="16"
 
 ```
-The required environment file of the container can also be configured via the files located in the respective directory:
+The required environment variables of the container can also be configured via the files located in the respective directory:
 ```
 ./minecraft-docker/data/config
 ```
