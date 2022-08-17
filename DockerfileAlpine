@@ -38,7 +38,7 @@ ENV     RCON_PORT="25575" \
 
 ADD ./data /app/data
 
-RUN apk add --update bash nodejs npm wget unzip 
+RUN apk add --update bash nodejs npm wget unzip && rm -rf /var/cache/apk/*
 
 # install nodejs apps
 WORKDIR /app/data/node
