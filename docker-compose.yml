@@ -18,7 +18,7 @@ services:
             - 'JAR_NAME=server.jar'
             - 'XMX=2G'
             - 'XMS=512M'
-            # optinoal settings
+            # optional settings
             - 'ENABLE_COMMAND_BLOCK=false'
             - 'GAMEMODE=survival'
             - 'MOTD=A Minecraft server in Docker'
@@ -40,7 +40,7 @@ services:
         deploy:
             resources:
                 limits:
-                    cpus: '1' # cpu limit
+                    # cpus: '1' # cpu limit
                     # memory: 2G
                 # reservations:
                 #     cpus: '0.25'
