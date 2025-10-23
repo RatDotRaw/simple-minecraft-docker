@@ -1,9 +1,10 @@
 # simple-minecraft-docker
-Minecraft dockerfile for a simple easy server
+Minecraft dockerfile for a "simple" and "easy" server
 
-# :exclamation: Be informed
-All the requirements have default values if you use the docker-compose.yml.
-If you are not using the docker-compose.yml, the container may behave unexpectedly.
+> [!IMPORTANT]
+> The `docker-compose.yml` has some required environment values.
+> If you are not using the included `docker-compose.yml`, make sure you set the environment variables.
+> Otherwisethe container may behave unexpectedly.
 
 # Run commands inside the container.
 The container contains a node.js script to execute commands via RCON.
